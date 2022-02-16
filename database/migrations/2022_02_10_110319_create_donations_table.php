@@ -16,8 +16,8 @@ class CreateDonationsTable extends Migration {
 			$table->integer('city_id')->unsigned();
 			$table->integer('client_id')->unsigned();
 			$table->integer('bags_num');
-			$table->string('hopital_name');
-			$table->string('hopital_address');
+			$table->string('hospital_name');
+			$table->string('hospital_address');
 			$table->decimal('latitude', 10,8);
 			$table->decimal('longitude', 10,8);
 			$table->longText('details');

@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Client extends Model 
+class Client extends Authenticatable
 {
 
-    protected $table = 'clients';
     public $timestamps = true;
+    protected $table = 'clients';
     protected $fillable = array('name', 'email', 'phone', 'password', 'd_o_b', 'blood_type_id', 'last_donation_date', 'city_id', 'pin_code');
+    protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s', 'updated_at' => 'datetime:Y-m-d H:m:s'];
+    protected $hidden = [
+        'password', 'api_token',
+    ];
 
     public function bloodType()
     {
