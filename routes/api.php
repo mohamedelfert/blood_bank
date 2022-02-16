@@ -39,6 +39,22 @@ Route::group(['prefix' => 'v1','namespace' => 'Api'],function (){
 //    Route::put('cities/{id}','CityController@update');
 //    Route::delete('cities/{id}','CityController@destroy');
 
+    /**************************** Categories *******************************/
+    Route::resource('categories','CategoryController');
+
+    /**************************** Blood Type *******************************/
+    Route::resource('blood-types','BloodTypeController');
+
+    /**************************** Contacts *******************************/
+    Route::get('contacts','ContactController@index');
+    Route::get('contacts/{id}','ContactController@show');
+    Route::post('contacts','ContactController@store');
+    Route::delete('contacts/{id}','ContactController@destroy');
+
+    /**************************** Settings *******************************/
+    Route::get('settings','SettingController@index');
+    Route::put('settings/{id}','SettingController@update');
+
     Route::middleware('auth:api')->group(function () {
         Route::get('posts','PostController@posts');
     });
