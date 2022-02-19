@@ -30,7 +30,7 @@ class Client extends Authenticatable
         return $this->belongsTo('App\Models\City');
     }
 
-    public function donations()
+    public function donations() // requests
     {
         return $this->hasMany('App\Models\Donation');
     }
@@ -42,7 +42,7 @@ class Client extends Authenticatable
 
     public function notifications()
     {
-        return $this->belongsToMany('App\Models\Notification');
+        return $this->belongsToMany('App\Models\Notification')->withPivot('is_read');
     }
 
     public function governorates()
