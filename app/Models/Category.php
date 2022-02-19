@@ -12,7 +12,7 @@ class Category extends Model
     protected $fillable = array('name');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function post()
+    public function posts()
     {
         return $this->hasMany('App\Models\Post');
     }

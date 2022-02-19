@@ -12,12 +12,12 @@ class BloodType extends Model
     protected $fillable = array('name');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function donationRquest()
+    public function donations()
     {
         return $this->hasMany('App\Models\Donation');
     }
 
-    public function clientName()
+    public function clients()
     {
         return $this->hasMany('App\Models\Client');
     }

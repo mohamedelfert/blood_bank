@@ -15,37 +15,42 @@ class Client extends Authenticatable
         'password', 'api_token',
     ];
 
-    public function bloodType()
+    public function bloodTypes()
     {
-        return $this->belongsTo('App\Models\BloodType');
+        return $this->belongsToMany('App\Models\BloodType','blood_type_client','client_id','blood_type_id');
     }
 
-    public function cityName()
+    public function bloodType()
+    {
+        return $this->belongsTo('App\Models\BloodType','blood_type_id');
+    }
+
+    public function city()
     {
         return $this->belongsTo('App\Models\City');
     }
 
-    public function donationRquest()
+    public function donations()
     {
         return $this->hasMany('App\Models\Donation');
     }
 
-    public function post()
+    public function posts() // favourites
     {
         return $this->belongsToMany('App\Models\Post');
     }
 
-    public function notification()
+    public function notifications()
     {
         return $this->belongsToMany('App\Models\Notification');
     }
 
-    public function governorateName()
+    public function governorates()
     {
-        return $this->belongsToMany('App\Models\Governorate');
+        return $this->belongsToMany('App\Models\Governorate','client_governorate','client_id','governorate_id');
     }
 
-    public function contact()
+    public function contacts()
     {
         return $this->hasMany('App\Models\Contact');
     }

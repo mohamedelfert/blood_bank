@@ -12,17 +12,17 @@ class City extends Model
     protected $fillable = array('name', 'governorate_id');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function governorateName()
+    public function governorate()
     {
         return $this->belongsTo('Governorate');
     }
 
-    public function clientName()
+    public function clients()
     {
         return $this->hasMany('App\Models\Client');
     }
 
-    public function donationRquest()
+    public function donations()
     {
         return $this->hasMany('App\Models\Donation');
     }

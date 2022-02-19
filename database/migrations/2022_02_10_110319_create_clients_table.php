@@ -19,6 +19,7 @@ class CreateClientsTable extends Migration {
 			$table->integer('city_id')->unsigned();
 			$table->string('pin_code')->nullable();
 			$table->string('api_token',60)->unique()->nullable();
+            $table->boolean('is_active')->default(1);
 			$table->timestamps();
 		});
 	}

@@ -12,12 +12,12 @@ class Notification extends Model
     protected $fillable = array('title', 'content', 'donation_request_id');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function donationRquest()
+    public function donation()
     {
         return $this->belongsTo('App\Models\Donation');
     }
 
-    public function clientName()
+    public function clients()
     {
         return $this->belongsToMany('App\Models\Client');
     }

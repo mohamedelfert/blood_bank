@@ -12,12 +12,12 @@ class Post extends Model
     protected $fillable = array('title', 'content', 'image', 'category_id');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function categoryName()
+    public function category()
     {
         return $this->belongsTo('App\Models\Category');
     }
 
-    public function clientName()
+    public function clients() // favourites
     {
         return $this->belongsToMany('App\Models\Client');
     }

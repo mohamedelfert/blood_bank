@@ -12,7 +12,7 @@ class Contact extends Model
     protected $fillable = array('client_id', 'subject', 'message');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function clientName()
+    public function client()
     {
         return $this->belongsTo('App\Models\Client');
     }

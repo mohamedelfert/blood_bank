@@ -12,12 +12,12 @@ class Governorate extends Model
     protected $fillable = array('name');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
-    public function cityName()
+    public function cities()
     {
-        return $this->hasMany('City');
+        return $this->hasMany('App\Models\City');
     }
 
-    public function clientName()
+    public function clients()
     {
         return $this->belongsToMany('App\Models\Client');
     }
