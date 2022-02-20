@@ -1,9 +1,9 @@
 @component('mail::message')
     # Reset Account Password
 
-    Welcome, {{ $data['data']->name }}
+    Welcome, {{ $client->name }}
 
-    Pin Code To Reset Password Is : {{ $data['data']->pin_code }}
+    Pin Code To Reset Password Is : {{ $client->pin_code }}
 
     Thanks,
     {{ config('app.name') }}

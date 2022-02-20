@@ -10,16 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class ClientResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $data = [];
+    protected $client;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data = [])
+    public function __construct($client)
     {
-        $this->data = $data;
+        $this->client = $client;
     }
 
     /**
@@ -31,6 +31,6 @@ class ClientResetPassword extends Mailable
     {
         return $this->markdown('emails.client_reset_password')
                     ->subject('Reset Client Password')
-                    ->with('data',$this->data);
+                    ->with('client',$this->client);
     }
 }

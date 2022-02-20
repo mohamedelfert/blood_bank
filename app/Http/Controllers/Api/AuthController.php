@@ -84,10 +84,11 @@ class AuthController extends Controller
             $update = $client->update(['pin_code'=>$pin_code]);
             if ($update){
                 // send email/pin_code to reset password
-                Mail::to($client->email)->send(new ClientResetPassword(['data' => $client, 'pin_code' => $pin_code]));
+                Mail::to($client->email)->send(new ClientResetPassword($client));
                 return responseJson(1, 'تم ارسال الكود , راجع هاتفك للحصول عليه',[
                     'pin_code' => $pin_code,
-                    'email' => $client->email
+                    'email' => $client->email,
+                    'mail_fails' => Mail::failures()
                 ]);
             }else{
                 return responseJson(0, 'عفوا , حدث خطأ الرجاء المحاوله مره اخري');
