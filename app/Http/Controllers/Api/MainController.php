@@ -136,10 +136,10 @@ class MainController extends Controller
         if (!$donation) {
             return responseJson(0, 'No Donation Found');
         }
-//        if ($request->user()->notifications()->where('donation_request_id',$donation->id)->first())
-//        {
-//            $request->user()->notifications()->updateExistingPivot($donation->notification->id,['is_read' => 1]);
-//        }
+        if ($request->user()->notifications()->where('donation_id',$donation->id)->first())
+        {
+            $request->user()->notifications()->updateExistingPivot($donation->notification->id,['is_read' => 1]);
+        }
         return responseJson(1, 'Success', $donation);
     }
 

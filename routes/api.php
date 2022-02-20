@@ -21,6 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'v1','namespace' => 'Api'],function (){
     Route::post('register','AuthController@register');
     Route::post('login','AuthController@login');
+    Route::post('reset-password','AuthController@resetPassword');
+    Route::post('new-password','AuthController@newPassword');
+
     Route::get('governorates','MainController@governorates');
     Route::get('cities','MainController@ceties');
     Route::get('categories','MainController@categories');

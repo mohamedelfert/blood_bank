@@ -11,7 +11,7 @@ class CreateNotificationsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->text('content')->nullable();
-			$table->integer('donation_request_id')->unsigned();
+			$table->integer('donation_id')->unsigned();
 			$table->timestamps();
 		});
 	}
