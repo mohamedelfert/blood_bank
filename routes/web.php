@@ -12,7 +12,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+    Route::get('/', function () {
+        return view('admin.home');
+    });
 
-Route::get('/', function () {
-    return view('welcome');
+    //================= this route for change language ( ar - en ) ===================//
+    Route::get('lang/{lang}', function ($lang) {
+        session()->has('lang') ? session()->forget('lang') : '';
+        $lang == 'ar' ? session()->put('lang', 'ar') : session()->put('lang', 'en');
+        return back();
+    });
 });
