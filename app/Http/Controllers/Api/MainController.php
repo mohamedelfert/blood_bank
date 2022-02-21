@@ -136,9 +136,8 @@ class MainController extends Controller
         if (!$donation) {
             return responseJson(0, 'No Donation Found');
         }
-        if ($request->user()->notifications()->where('donation_id',$donation->id)->first())
-        {
-            $request->user()->notifications()->updateExistingPivot($donation->notification->id,['is_read' => 1]);
+        if ($request->user()->notifications()->where('donation_id', $donation->id)->first()) {
+            $request->user()->notifications()->updateExistingPivot($donation->notification->id, ['is_read' => 1]);
         }
         return responseJson(1, 'Success', $donation);
     }
@@ -162,8 +161,22 @@ class MainController extends Controller
         if ($validate->fails()) {
             return responseJson(2, $validate->errors());
         } else {
-            $donation = $request->user()->donations()->create($request->all());
-            return responseJson(1, 'تم اضافه طلب التبرع بنجاح', $donation);
+            $donation_request = $request->user()->donations()->create($request->all());
+
+            // find clients for this donation request based on governorate and blood type
+            $clients_ids = $donation_request->city->governorate->clients()->whereHas('bloodTypes', function ($query) use ($donation_request) {
+                $query->where('blood_types.id', $donation_request->blood_type_id);
+            })->pluck('clients.id')->toArray();
+
+            if (count($clients_ids)) {
+                // create notification on database
+                $notification = $donation_request->notifications()->create([
+                    'title' => 'حاله تحتاج تبرع قريبه منك',
+                    'content' => optional($donation_request->bloodType)->name . 'يوجد حاله تحتاج الي التبرع بالدم قريبه منك فصيله دمها '
+                ]);
+                $notification->clients()->attach($clients_ids);
+            }
+            return responseJson(1, 'تم اضافه طلب التبرع بنجاح', $donation_request->load('client','city'));
         }
     }
     //======================================= Donations =========================================//
