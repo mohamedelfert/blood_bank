@@ -17,6 +17,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         return view('admin.home');
     });
 
+    Route::resource('governorates','GovernorateController');
+    Route::resource('cities','CityController');
+    Route::resource('categories','CategoryController');
+    Route::resource('clients','ClientController');
+    Route::resource('posts','PostController');
+
     //================= this route for change language ( ar - en ) ===================//
     Route::get('lang/{lang}', function ($lang) {
         session()->has('lang') ? session()->forget('lang') : '';

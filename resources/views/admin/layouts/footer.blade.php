@@ -1,5 +1,5 @@
             <footer class="main-footer">
-                <strong>Copyright &copy; 2021-2022 <a href="#">Blood Bank</a>.</strong>
+                <strong>Copyright &copy; 2021-2022 <a href="#">{{ trans('main.brand') }}</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
                     <b>Version</b> 1.0.0
@@ -46,9 +46,8 @@
         <script src="{{ url('/design/admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
         <!-- Tempusdominus Bootstrap 4 -->
         <script src="{{ url('/design/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-        <!-- Toastr -->
-        @toastr_js
-        @toastr_render
+        <!-- Internal Modal js-->
+        <script src="{{ url('design/admin/dist/js/modal.js') }}"></script>
         <!-- Summernote -->
         <script src="{{ url('/design/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
         <!-- overlayScrollbars -->
@@ -62,5 +61,9 @@
 
         @stack('js')
         @stack('css')
+        <!-- Toastr -->
+        @jquery
+        @toastr_js
+        @toastr_render
     </body>
 </html>

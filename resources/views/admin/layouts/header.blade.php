@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ !empty($title) ? $title : trans('navbar.title') }}</title>
+        <title>{{ !empty($title) ? $title : trans('main.brand') }}</title>
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
         <!-- Font Awesome -->
@@ -14,11 +14,9 @@
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
         <!-- iCheck -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-        <!-- Toastr -->
-        @toastr_css
         <!-- JQVMap -->
         <link rel="stylesheet" href="{{ url('/design/admin/plugins/jqvmap/jqvmap.min.css') }}">
-        <link rel="stylesheet" href="{{ url('/design/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ url('/design/admin/plugins/datatables/jquery.dataTables.min.js') }}">
         <!-- Theme style -->
         @if(appDirection() == 'ltr')
             <link rel="stylesheet" href="{{ url('/design/admin/dist/css/adminlte.min.css') }}">
@@ -48,5 +46,7 @@
 
         <!-- myFunctions js -->
         <script src="{{ url('/design/admin/dist/js/myFunctions.js') }}"></script>
+        <!-- Toastr -->
+        @toastr_css
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">

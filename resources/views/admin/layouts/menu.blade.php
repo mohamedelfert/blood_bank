@@ -115,7 +115,7 @@
             <form method="GET" action="{{ url('admin/logout') }}">
                 @csrf
                 <a class="dropdown-item" href="{{ adminUrl('logout') }}" onclick="event.preventDefault();this.closest('form').submit();">
-                    <i class="text-danger ti-unlock"></i>{{ __('navbar.logout') }}</a>
+                    <i class="text-danger ti-unlock"></i>{{ __('main.logout') }}</a>
             </form>
         </li>
     </ul>
