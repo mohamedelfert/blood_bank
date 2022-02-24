@@ -9,7 +9,8 @@ class Donation extends Model
 
     protected $table = 'donations';
     public $timestamps = true;
-    protected $fillable = array('patient_name', 'patient_phone', 'patient_age', 'blood_type_id', 'city_id', 'client_id', 'bags_num', 'hospital_name', 'hospital_address', 'latitude', 'longitude', 'details');
+    protected $guarded = [];
+//    protected $fillable = array('patient_name', 'patient_phone', 'patient_age', 'blood_type_id', 'city_id', 'client_id', 'bags_num', 'hospital_name', 'hospital_address', 'latitude', 'longitude', 'details');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
     public function bloodType()

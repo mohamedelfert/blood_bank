@@ -9,7 +9,8 @@ class Notification extends Model
 
     protected $table = 'notifications';
     public $timestamps = true;
-    protected $fillable = array('title', 'content', 'donation_id');
+    protected $guarded = [];
+//    protected $fillable = array('title', 'content', 'donation_id');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
     public function donation()

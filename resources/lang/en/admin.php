@@ -12,6 +12,7 @@ return [
     'client_city' => 'City',
     'client_governorate' => 'Governorate',
     'client_status' => 'Status',
+    'client_delete_message' => 'Sorry There Are Operations Related To This Client',
 
     'governorate_name' => 'Governorate Name',
     'add_governorate' => 'Add New Governorate',

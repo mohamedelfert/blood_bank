@@ -9,7 +9,8 @@ class City extends Model
 
     protected $table = 'cities';
     public $timestamps = true;
-    protected $fillable = array('name', 'governorate_id');
+    protected $guarded = [];
+//    protected $fillable = array('name', 'governorate_id');
     protected $casts = ['created_at' => 'datetime:Y-m-d H:m:s','updated_at' => 'datetime:Y-m-d H:m:s'];
 
     public function governorate()

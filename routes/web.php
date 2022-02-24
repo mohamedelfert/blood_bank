@@ -20,7 +20,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('governorates','GovernorateController');
     Route::resource('cities','CityController');
     Route::resource('categories','CategoryController');
+
     Route::resource('clients','ClientController');
+    Route::get('activate/{id}','ClientController@activate');
+    Route::get('deactivate/{id}','ClientController@deactivate');
+    Route::post('blood-types-filter','ClientController@bloodTypesFilter')->name('clients.blood-types-filter');
+    Route::get('filter','ClientController@filter');
+
     Route::resource('posts','PostController');
 
     //================= this route for change language ( ar - en ) ===================//
