@@ -156,6 +156,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ active_menu('donations')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <p>
+                            {{ trans('main.donations') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('donations')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('donations') }}" class="nav-link">
+                                <i class="fas fa-list"></i>
+                                <p>{{ trans('main.donations_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ active_menu('contacts')[0] }}">
+                    <a href="{{ adminUrl('contacts') }}" class="nav-link">
+                        <i class="nav-icon fas fa-envelope-open"></i>
+                        <p>{{ trans('main.contacts') }}</p>
+                    </a>
+                </li>
                 <li class="nav-item {{ active_menu('settings')[0] }}">
                     <a href="{{ adminUrl('settings') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

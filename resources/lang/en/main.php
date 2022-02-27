@@ -14,5 +14,8 @@ return [
     'clients_list' => 'Clients List',
     'posts' => 'Posts',
     'posts_list' => 'Posts List',
+    'donations' => 'Donations',
+    'donations_list' => 'Donations List',
+    'contacts' => 'Contacts',
     'settings' => 'Settings',
 ];

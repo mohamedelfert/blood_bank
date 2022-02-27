@@ -24,10 +24,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::resource('clients','ClientController');
     Route::get('activate/{id}','ClientController@activate');
     Route::get('deactivate/{id}','ClientController@deactivate');
-    Route::post('blood-types-filter','ClientController@bloodTypesFilter')->name('clients.blood-types-filter');
+    Route::post('blood-types-filters','ClientController@bloodTypesFilter')->name('clients.blood-types-filters');
     Route::get('filter','ClientController@filter');
 
     Route::resource('posts','PostController');
+
+    Route::resource('donations','DonationController');
+    Route::post('blood-types-filter','DonationController@bloodTypesFilter')->name('donations.blood-types-filter');
+    Route::get('donations-filter','DonationController@filter');
+
+    Route::resource('contacts','ContactController');
+    Route::get('filter-contacts','ContactController@filter');
+
+    Route::resource('settings','SettingController');
 
     //================= this route for change language ( ar - en ) ===================//
     Route::get('lang/{lang}', function ($lang) {

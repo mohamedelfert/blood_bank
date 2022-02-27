@@ -5,10 +5,9 @@
         <div class="col-xl-12 mb-30">
             <div class="card card-statistics h-100">
                 <div class="card-body">
-
                     <!-- This Form For Filter -->
                     <div style="margin-bottom: 10px;float: left">
-                        <form action="{{ route('clients.blood-types-filters') }}" method="POST" class="d-inline-block">
+                        <form action="{{ route('donations.blood-types-filter') }}" method="POST" class="d-inline-block">
                             {{ csrf_field() }}
                             <select class="custom-select mr-sm-2" name="id" data-style="btn-info" onchange="this.form.submit()">
                                 <option value="" selected disabled>بحث بفصيله الدم</option>
@@ -19,7 +18,7 @@
                         </form>
                     </div>
                     <div style="margin-bottom: 10px;float: right">
-                        <form action="{{adminUrl('filter')}}" method="GET" class="d-inline-block">
+                        <form action="donations-filter" method="GET" class="d-inline-block">
                             <div class="row">
                                 <div class="col-sm-9">
                                     <div class="form-group">
@@ -35,80 +34,71 @@
                         </form>
                     </div>
                     <!-- This Form For Filter -->
-                    @if(count($clients))
+                    @if(count($donations))
                         <div class="table-responsive">
                             <table id="datatable" class="table table-striped table-bordered p-0">
                             <thead class="text-center">
                             <tr>
                                 <th>#</th>
-                                <th>{{trans('admin.client_name')}}</th>
-                                <th>{{trans('admin.client_email')}}</th>
-                                <th>{{trans('admin.client_phone')}}</th>
-                                <th>{{trans('admin.client_d_o_b')}}</th>
-                                <th>{{trans('admin.client_blood_type')}}</th>
-                                <th>{{trans('admin.client_last_donation_date')}}</th>
-                                <th>{{trans('admin.client_city')}}</th>
-                                <th>{{trans('admin.client_governorate')}}</th>
-                                <th>{{trans('admin.client_status')}}</th>
+                                <th>{{trans('admin.patient_name')}}</th>
+                                <th>{{trans('admin.patient_age')}}</th>
+                                <th>{{trans('admin.bags_num')}}</th>
+                                <th>{{trans('admin.hospital_name')}}</th>
+                                <th>{{trans('admin.patient_phone')}}</th>
+                                <th>{{trans('admin.patient_city')}}</th>
+                                <th>{{trans('admin.patient_blood_type')}}</th>
+                                <th>{{trans('admin.patient_show')}}</th>
                                 <th>{{trans('admin.control')}}</th>
                             </tr>
                             </thead>
                             <tbody class="text-center">
                             <?php
                             if (isset($filter)){
-                                $clients = $filter;
+                                $donations = $filter;
                             }else{
-                                $clients = $clients;
+                                $donations = $donations;
                             }
                                 $i = 1;
                             ?>
-                            @foreach($clients as $client)
+                            @foreach($donations as $donation)
                                 <tr>
                                     <td>{{$i++}}</td>
-                                    <td>{{$client->name}}</td>
-                                    <td>{{$client->email}}</td>
-                                    <td>{{$client->phone}}</td>
-                                    <td>{{$client->d_o_b}}</td>
-                                    <td><span class="badge badge-pill badge-info">{{$client->bloodType->name}}</span></td>
-                                    <td><span class="badge badge-pill badge-warning">{{$client->last_donation_date}}</span></td>
-                                    <td>{{$client->city->name}}</td>
-                                    <td>{{$client->city->governorate->name}}</td>
+                                    <td>{{$donation->patient_name}}</td>
+                                    <td>{{$donation->patient_age}}</td>
+                                    <td>{{$donation->bags_num}}</td>
+                                    <td>{{$donation->hospital_name}}</td>
+                                    <td>{{$donation->patient_phone}}</td>
+                                    <td>{{$donation->city->name}}</td>
+                                    <td>{{$donation->bloodType->name}}</td>
                                     <td>
-                                        @if($client->is_active == 0)
-                                            <a href="activate/{{$client->id}}">
-                                                <span class="badge badge-pill badge-success">تفغيل</span>
-                                            </a>
-                                        @elseif($client->is_active == 1)
-                                            <a href="deactivate/{{$client->id}}">
-                                                <span class="badge badge-pill badge-danger">الغاء التفعيل</span>
-                                            </a>
-                                        @endif
+                                        <a type="button" class="btn btn-primary" href="{{ adminUrl('donations/'.$donation->id) }}">
+                                            <i class="ti-plus"></i>show
+                                        </a>
                                     </td>
                                     <td>
                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                           data-toggle="modal" href="#delete{{ $client->id }}" title="حذف"><i class="fa fa-trash"></i>
+                                           data-toggle="modal" href="#delete{{ $donation->id }}" title="حذف"><i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
 
                                 <!-- Delete -->
-                                <div class="modal fade" id="delete{{ $client->id }}">
+                                <div class="modal fade" id="delete{{ $donation->id }}">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content modal-content-demo">
                                             <div class="modal-header">
-                                                <h6 class="modal-title">{{trans('admin.delete_client')}}</h6>
+                                                <h6 class="modal-title">{{trans('admin.delete_donation')}}</h6>
                                                 <button aria-label="Close" class="close" data-dismiss="modal"
-                                                        type="button"><span
-                                                        aria-hidden="true">&times;</span></button>
+                                                        type="button"><span aria-hidden="true">&times;</span></button>
                                             </div>
-                                            <form action="{{ route('clients.destroy','test') }}" method="post">
+                                            <form action="{{ route('donations.destroy','test') }}" method="post">
                                                 {{ method_field('delete') }}
                                                 {{ csrf_field() }}
                                                 <div class="modal-body">
                                                     <p>{{trans('admin.msg_delete')}}</p><br>
-                                                    <input type="hidden" name="id" id="id" value="{{ $client->id }}">
-                                                    <input class="form-control" name="name" id="name" type="text"
-                                                           value="{{ $client->name }}" readonly>
+                                                    <input type="hidden" name="id" id="id" value="{{ $donation->id }}">
+                                                    <input class="form-control" name="patient_name" id="patient_name" type="text"
+                                                           value="{{ $donation->patient_name }}" readonly>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
@@ -132,21 +122,20 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th>#</th>
-                                        <th>{{trans('admin.client_name')}}</th>
-                                        <th>{{trans('admin.client_email')}}</th>
-                                        <th>{{trans('admin.client_phone')}}</th>
-                                        <th>{{trans('admin.client_d_o_b')}}</th>
-                                        <th>{{trans('admin.client_blood_type')}}</th>
-                                        <th>{{trans('admin.client_last_donation_date')}}</th>
-                                        <th>{{trans('admin.client_city')}}</th>
-                                        <th>{{trans('admin.client_governorate')}}</th>
-                                        <th>{{trans('admin.client_status')}}</th>
+                                        <th>{{trans('admin.patient_name')}}</th>
+                                        <th>{{trans('admin.patient_age')}}</th>
+                                        <th>{{trans('admin.bags_num')}}</th>
+                                        <th>{{trans('admin.hospital_name')}}</th>
+                                        <th>{{trans('admin.patient_phone')}}</th>
+                                        <th>{{trans('admin.patient_city')}}</th>
+                                        <th>{{trans('admin.patient_blood_type')}}</th>
+                                        <th>{{trans('admin.contact_show')}}</th>
                                         <th>{{trans('admin.control')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody class="text-center">
                                     <tr>
-                                        <td colspan="11" class="text-center text-danger">لايوجد عملاء</td>
+                                        <td colspan="10" class="text-center text-danger">لايوجد اي طلبات</td>
                                     </tr>
                                 </tbody>
                             </table>
