@@ -16,6 +16,9 @@ return [
     'posts_list' => 'Posts List',
     'donations' => 'Donations',
     'donations_list' => 'Donations List',
+    'users' => 'Users & Permissions',
+    'users_list' => 'Users List',
+    'roles_list' => 'Roles List',
     'contacts' => 'Contacts',
     'settings' => 'Settings',
 ];

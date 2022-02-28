@@ -55,6 +55,8 @@ return [
     'longitude' => 'Longitude',
     'created_at' => 'Donation Created At',
 
+    'user_name' => 'Name',
+
     'contact_subject' => 'Subject',
     'contact_message' => 'Message',
     'contact_client_name' => 'Client Name',

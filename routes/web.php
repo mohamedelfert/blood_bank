@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     Route::resource('settings','SettingController');
 
+    Route::resource('users','UserController');
+    Route::resource('roles','RoleController');
+
     //================= this route for change language ( ar - en ) ===================//
     Route::get('lang/{lang}', function ($lang) {
         session()->has('lang') ? session()->forget('lang') : '';

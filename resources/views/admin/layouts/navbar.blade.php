@@ -173,6 +173,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item {{ active_menu('users')[0] }}">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-shield"></i>
+                        <p>
+                            {{ trans('main.users') }}
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" {{ active_menu('users')[1] }}>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('users') }}" class="nav-link">
+                                <i class="fas fa-user-plus"></i>
+                                <p>{{ trans('main.users_list') }}</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ adminUrl('roles') }}" class="nav-link">
+                                <i class="fas fa-user-secret"></i>
+                                <p>{{ trans('main.roles_list') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item {{ active_menu('contacts')[0] }}">
                     <a href="{{ adminUrl('contacts') }}" class="nav-link">
                         <i class="nav-icon fas fa-envelope-open"></i>
