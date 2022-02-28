@@ -45,7 +45,7 @@
                 <img src="{{ url('/') }}/design/admin/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Mohamed <br> <small><i class="fa fa-circle text-success"></i> Online</small></a>
+                <a href="#" class="d-block">{{ auth()->user()->name }} <br> <small><i class="fa fa-circle text-success"></i> Online</small></a>
             </div>
         </div>
         <!-- SidebarSearch Form -->

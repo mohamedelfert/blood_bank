@@ -179,6 +179,7 @@ return [
          * My Packages
          */
         Yoeunes\Toastr\ToastrServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
     ],
 

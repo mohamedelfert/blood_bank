@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,34 +13,43 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+Route::get('/', function () {
+    return view('auth.login');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin'], function () {
     Route::get('/', function () {
         return view('admin.home');
     });
 
-    Route::resource('governorates','GovernorateController');
-    Route::resource('cities','CityController');
-    Route::resource('categories','CategoryController');
+    Route::resource('governorates', 'GovernorateController');
+    Route::resource('cities', 'CityController');
+    Route::resource('categories', 'CategoryController');
 
-    Route::resource('clients','ClientController');
-    Route::get('activate/{id}','ClientController@activate');
-    Route::get('deactivate/{id}','ClientController@deactivate');
-    Route::post('blood-types-filters','ClientController@bloodTypesFilter')->name('clients.blood-types-filters');
-    Route::get('filter','ClientController@filter');
+    Route::resource('clients', 'ClientController');
+    Route::get('activate/{id}', 'ClientController@activate');
+    Route::get('deactivate/{id}', 'ClientController@deactivate');
+    Route::post('blood-types-filters', 'ClientController@bloodTypesFilter')->name('clients.blood-types-filters');
+    Route::get('filter', 'ClientController@filter');
 
-    Route::resource('posts','PostController');
+    Route::resource('posts', 'PostController');
 
-    Route::resource('donations','DonationController');
-    Route::post('blood-types-filter','DonationController@bloodTypesFilter')->name('donations.blood-types-filter');
-    Route::get('donations-filter','DonationController@filter');
+    Route::resource('donations', 'DonationController');
+    Route::post('blood-types-filter', 'DonationController@bloodTypesFilter')->name('donations.blood-types-filter');
+    Route::get('donations-filter', 'DonationController@filter');
 
-    Route::resource('contacts','ContactController');
-    Route::get('filter-contacts','ContactController@filter');
+    Route::resource('contacts', 'ContactController');
+    Route::get('filter-contacts', 'ContactController@filter');
 
-    Route::resource('settings','SettingController');
+    Route::resource('settings', 'SettingController');
 
-    Route::resource('users','UserController');
-    Route::resource('roles','RoleController');
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
 
     //================= this route for change language ( ar - en ) ===================//
     Route::get('lang/{lang}', function ($lang) {

@@ -2,6 +2,10 @@
 return [
     'brand' => 'Blood Bank',
     'logout' => 'Sign Out',
+    'login' => 'Sign In',
+    'register' => 'Sign Up',
+    'reset_password' => 'Reset Password',
+    'register_new' => 'Register a new membership',
     'home' => 'Home',
     'dashboard' => 'Dashboard',
     'governorates' => 'Governorates',
