@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{$i++}}</td>
                                     <td>{{$city->name}}</td>
-                                    <td>{{$city->governorate->name}}</td>
+                                    <td>{{optional($city->governorate)->name}}</td>
                                     <td>
                                         <a class="modal-effect btn btn-info" data-effect="effect-scale"
                                            data-toggle="modal" href="#edit{{ $city->id }}" title="تعديل">

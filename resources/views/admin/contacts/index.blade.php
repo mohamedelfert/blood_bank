@@ -57,7 +57,7 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$contact->subject}}</td>
                                     <td>{{$contact->message}}</td>
-                                    <td>{{$contact->client->name}}</td>
+                                    <td>{{optional($contact->client)->name}}</td>
                                     <td>{{$contact->created_at}}</td>
                                     <td>
                                         <a type="button" class="btn btn-primary" href="{{ adminUrl('contacts/'.$contact->id) }}">

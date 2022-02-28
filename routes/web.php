@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','auto_check_permission'], 'namespace' => 'Admin'], function () {
     Route::get('/', function () {
         return view('admin.home');
     });

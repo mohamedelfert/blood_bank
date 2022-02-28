@@ -46,7 +46,7 @@
                                                         <span
                                                             class="info-box-text text-center text-muted">{{ trans('admin.patient_city') }}</span>
                                                         <span
-                                                            class="info-box-number text-center mb-0 badge badge-pill badge-warning">{{ $donation->city->name }}</span>
+                                                            class="info-box-number text-center mb-0 badge badge-pill badge-warning">{{ optional($donation->city)->name }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@
                                                         <span
                                                             class="info-box-text text-center text-muted">{{ trans('admin.patient_blood_type') }}</span>
                                                         <span
-                                                            class="info-box-number text-center mb-0 badge badge-pill badge-danger">{{ $donation->bloodType->name }}</span>
+                                                            class="info-box-number text-center mb-0 badge badge-pill badge-danger">{{ optional($donation->bloodType)->name }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@
                                                         <span
                                                             class="info-box-text text-center text-muted">{{ trans('admin.patient_governorate') }}</span>
                                                         <span
-                                                            class="info-box-number text-center text-muted mb-0">{{ $donation->city->governorate->name }}</span>
+                                                            class="info-box-number text-center text-muted mb-0">{{ optional($donation->city->governorate)->name }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,7 +90,7 @@
                                                         <span
                                                             class="info-box-text text-center text-muted">{{ trans('admin.patient_client_name') }}</span>
                                                         <span
-                                                            class="info-box-number text-center text-muted mb-0">{{ $donation->client->name }}</span>
+                                                            class="info-box-number text-center text-muted mb-0">{{ optional($donation->client)->name }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,7 +100,7 @@
                                                         <span
                                                             class="info-box-text text-center text-muted">{{ trans('admin.patient_client_phone') }}</span>
                                                         <span
-                                                            class="info-box-number text-center text-muted mb-0">{{ $donation->client->phone }}</span>
+                                                            class="info-box-number text-center text-muted mb-0">{{ optional($donation->client)->phone }}</span>
                                                     </div>
                                                 </div>
                                             </div>

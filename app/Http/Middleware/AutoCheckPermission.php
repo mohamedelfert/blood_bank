@@ -24,9 +24,9 @@ class AutoCheckPermission
                 abort(403);
             }
         }
-//        else {
-//            abort(403);
-//        }
+        else {
+            abort(403);
+        }
         return $next($request);
     }
 }

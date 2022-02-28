@@ -68,8 +68,8 @@
                                     <td>{{$donation->bags_num}}</td>
                                     <td>{{$donation->hospital_name}}</td>
                                     <td>{{$donation->patient_phone}}</td>
-                                    <td>{{$donation->city->name}}</td>
-                                    <td>{{$donation->bloodType->name}}</td>
+                                    <td>{{optional($donation->city)->name}}</td>
+                                    <td>{{optional($donation->bloodType)->name}}</td>
                                     <td>
                                         <a type="button" class="btn btn-primary" href="{{ adminUrl('donations/'.$donation->id) }}">
                                             <i class="ti-plus"></i>show

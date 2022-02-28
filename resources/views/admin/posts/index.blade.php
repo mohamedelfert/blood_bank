@@ -33,7 +33,7 @@
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->content}}</td>
                                     <td><img class="img-circle mb-3" src="{{ URL::asset('Attachments/'.$post->title.'/'.$post->image) }}" alt="post image" style="width: 80px;height: 50px;"></td>
-                                    <td>{{$post->category->name}}</td>
+                                    <td>{{optional($post->category)->name}}</td>
                                     <td>{{$post->publish_date}}</td>
                                     <td>
                                         <a class="modal-effect btn btn-info" data-effect="effect-scale"

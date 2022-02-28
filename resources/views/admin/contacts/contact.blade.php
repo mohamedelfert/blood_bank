@@ -11,7 +11,7 @@
                                 <div class="form-group">
                                     <label for="name">{{ trans('admin.contact_client_name') }}</label>
                                     <input type="text" name="name" class="form-control" id="name"
-                                           disabled value="{{ $contact->client->name }}">
+                                           disabled value="{{ optional($contact->client)->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="subject">{{ trans('admin.contact_subject') }}</label>

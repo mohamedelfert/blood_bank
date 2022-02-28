@@ -69,10 +69,10 @@
                                     <td>{{$client->email}}</td>
                                     <td>{{$client->phone}}</td>
                                     <td>{{$client->d_o_b}}</td>
-                                    <td><span class="badge badge-pill badge-info">{{$client->bloodType->name}}</span></td>
+                                    <td><span class="badge badge-pill badge-info">{{optional($client->bloodType)->name}}</span></td>
                                     <td><span class="badge badge-pill badge-warning">{{$client->last_donation_date}}</span></td>
-                                    <td>{{$client->city->name}}</td>
-                                    <td>{{$client->city->governorate->name}}</td>
+                                    <td>{{optional($client->city)->name}}</td>
+                                    <td>{{optional($client->city->governorate)->name}}</td>
                                     <td>
                                         @if($client->is_active == 0)
                                             <a href="activate/{{$client->id}}">

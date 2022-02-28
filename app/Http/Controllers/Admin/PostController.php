@@ -71,7 +71,7 @@ class PostController extends Controller
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $file_name = time() . $file->getClientOriginalName();
-                $file->move(public_path('Attachments/' . $request->title), $file_name);
+                $file->move(public_path('Attachments/'.$post->title), $file_name);
                 $post->image = $file_name;
                 $post->save();
             }
@@ -134,26 +134,28 @@ class PostController extends Controller
         $data = $this->validate($request, $rules, $validate_msg);
 
         try {
+            $post = Post::findOrFail($id);
+            $old_title = $post->first()->title; // to delete folder if change title
             $data['title'] = $request->title;
             $data['content'] = $request->content;
             $data['category_id'] = $request->category_id;
             $data['publish_date'] = $request->publish_date;
             $data['client_id'] = auth()->user()->id;
-            $post = Post::findOrFail($id);
             $post->update($data);
-            if ($request->hasFile('image')) {
 
+            if ($request->hasFile('image')) {
                 $post->where('id',$request->id)->first();
                 if (!empty($post->title)){
-                    Storage::disk('public_path')->deleteDirectory($post->title);
+                    Storage::disk('public_path')->deleteDirectory($old_title);
                 }
 
                 $file = $request->file('image');
                 $file_name = time() . $file->getClientOriginalName();
-                $file->move(public_path('Attachments/' . $request->title), $file_name);
+                $file->move(public_path('Attachments/'.$post->title), $file_name);
                 $post->image = $file_name;
                 $post->save();
             }
+
             toastr()->warning(trans('messages.update'));
             return back();
 
