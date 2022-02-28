@@ -32,7 +32,7 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->content}}</td>
-                                    <td>{{$post->image}}</td>
+                                    <td><img class="img-circle mb-3" src="{{ URL::asset('Attachments/'.$post->title.'/'.$post->image) }}" alt="post image" style="width: 80px;height: 50px;"></td>
                                     <td>{{$post->category->name}}</td>
                                     <td>{{$post->publish_date}}</td>
                                     <td>
@@ -61,7 +61,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="{{ route('posts.update','test') }}" method="post">
+                                            <div class="modal-body">
+                                                <form action="{{ route('posts.update','test') }}" method="post" enctype="multipart/form-data">
                                                 {{ method_field('patch') }}
                                                 {{ csrf_field() }}
 
@@ -89,9 +90,11 @@
                                                     <input class="form-control fc-datepicker" id="publish_date" name="publish_date" value="{{ $post->publish_date }}"
                                                            placeholder="YYYY-MM-DD" type="date" required>
                                                 </div>
-                                                <div class="col" style="margin-top: 5px">
-                                                    <h5 class="card-title">{{trans('admin.post_image')}}</h5>
-                                                    <input type="file" name="image" id="image" class="dropify" accept=".jpg, .png, image/jpeg, image/png" data-height="70" required/>
+
+                                                <label for="image" class="control-label col">{{trans('admin.post_image')}}</label>
+                                                <div class="col" style="margin-top: 5px;margin-bottom: 5px;">
+                                                    <input class="custom-file-input" name="image" id="image" type="file" accept=".jpg, .jpeg, .png, image/jpg, image/jpeg, image/png" data-height="70" required>
+                                                    <label class="custom-file-label" for="customFile">اختيار الملف</label>
                                                     <p class="text-danger" style="margin-top: 5px">* صيغة المرفق : ( JPEG , JPG , PNG ) </p>
                                                 </div>
 
@@ -100,6 +103,7 @@
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('admin.btn_close')}}</button>
                                                 </div>
                                             </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +188,7 @@
 
                             <label for="image" class="control-label col">{{trans('admin.post_image')}}</label>
                             <div class="col" style="margin-top: 5px;margin-bottom: 5px;">
-                                <input class="custom-file-input" name="image" id="image" type="file" accept=".jpg, .png, image/jpeg, image/png" data-height="70" required>
+                                <input class="custom-file-input" name="image" id="image" type="file" accept=".jpg, .jpeg, .png, image/jpg, image/jpeg, image/png" data-height="70" required>
                                 <label class="custom-file-label" for="customFile">اختيار الملف</label>
                                 <p class="text-danger" style="margin-top: 5px">* صيغة المرفق : ( JPEG , JPG , PNG ) </p>
                             </div>
