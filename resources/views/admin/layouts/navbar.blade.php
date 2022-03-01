@@ -11,7 +11,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ adminUrl() }}" class="nav-link">{{ trans('main.home') }}</a>
+            <a href="{{ url('home') }}" class="nav-link">{{ trans('main.home') }}</a>
         </li>
     </ul>
 
@@ -32,7 +32,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ adminUrl() }}" class="brand-link">
+    <a href="{{ url('home') }}" class="brand-link">
         <img src="{{ url('/') }}/design/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">{{ trans('main.brand') }}</span>
     </a>
@@ -66,7 +66,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{ adminUrl() }}" class="nav-link">
+                    <a href="{{ url('home') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>{{ trans('main.dashboard') }}</p>
                     </a>

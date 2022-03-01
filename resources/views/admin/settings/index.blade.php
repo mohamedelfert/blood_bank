@@ -6,7 +6,7 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <div style="margin-bottom: 10px;">
-                        <a type="button" class="btn btn-primary" href="{{ adminUrl() }}">
+                        <a type="button" class="btn btn-primary" href="{{ url('home') }}">
                             <i class="fas fa-home"></i>
                         </a>
                     </div>

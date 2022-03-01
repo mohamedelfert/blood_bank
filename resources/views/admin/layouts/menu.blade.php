@@ -73,17 +73,11 @@
     <ul class="dropdown-menu">
         <!-- Menu Footer-->
         <li class="user-footer">
+            <a class="dropdown-item" href="{{ adminUrl('settings') }}"><i class="text-info fas fa-cogs"></i> Settings </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-            <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
-            <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-            <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                    class="badge badge-info">6</span> </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href=""><i class="text-info ti-settings"></i>Settings</a>
             <a class="dropdown-item" href="{{ route('logout') }}"
                onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                <i class="bx bx-log-out"></i>{{ trans('main.logout') }}</a>
+                <i class="text-danger fas fa-sign-out-alt"></i> {{ trans('main.logout') }} </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>

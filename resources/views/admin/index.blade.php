@@ -11,8 +11,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ adminUrl() }}">{{ trans('main.home') }}</a></li>
-                        <li class="breadcrumb-item active">{{ !empty($title) ? $title : ('main.dashboard') }}</li>
+                        <li class="breadcrumb-item"><a href="{{ url('home') }}">{{ trans('main.home') }}</a></li>
+                        <li class="breadcrumb-item active">{{ !empty($title) ? $title : trans('main.dashboard') }}</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
