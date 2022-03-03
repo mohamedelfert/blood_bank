@@ -13,8 +13,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
+    return view('front.home');
+});
+
+Route::group(['prefix' => 'front', 'namespace' => 'Front'], function () {
+    Route::get('/', 'MainController@home');
+    Route::get('/about-app', 'MainController@about_app')->name('about-app');
+    Route::get('/about-us', 'MainController@about_us')->name('about-us');
+    Route::get('/contact', 'MainController@contact')->name('contact');
+    Route::get('/donation-requests', 'MainController@donation_requests')->name('donation-requests');
+    Route::get('/donation-details', 'MainController@donation_details')->name('donation-details');
+    Route::get('/posts', 'MainController@posts')->name('posts');
+    Route::get('/post', 'MainController@post')->name('post');
+    Route::get('/signup', 'AuthController@signup')->name('signup');
+    Route::get('/signin', 'AuthController@signin')->name('signin');
+});
+
+Route::get('/admin', function () {
     return view('auth.login');
 });
 
@@ -22,8 +38,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth','auto_check_permission'], 'namespace' => 'Admin'], function () {
-    Route::get('/', function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'auto_check_permission'], 'namespace' => 'Admin'], function () {
+    Route::get('/admin', function () {
         return view('admin.home');
     });
 
