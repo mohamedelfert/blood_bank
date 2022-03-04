@@ -62,6 +62,9 @@ class AuthController extends Controller
         $client->governorates()->attach(optional($client->city)->governorate_id); // to add in table ( client_governorate ) client_id and governorate_id ( for notification settings )
         $client->bloodTypes()->attach($client->blood_type_id); // to add in table ( blood_type_client ) client_id and blood_type_id ( for notification settings )
 
+        // login for this admin after update data
+        auth()->guard('client')->attempt(['phone' => $request->phone, 'password' => $request->password]);
+
         toastr()->success(trans('messages.success'));
         return redirect(url('/'));
     }
