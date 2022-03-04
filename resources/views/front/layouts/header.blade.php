@@ -22,6 +22,10 @@
         <!--style css-->
         <link rel="stylesheet" href="{{ asset('design/front/css/style.css') }}">
 
+
+        <!-- Toastr -->
+        @toastr_css
+
         <title>Blood Bank</title>
     </head>
     <body>

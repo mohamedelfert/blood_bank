@@ -11,7 +11,7 @@
                 <div class="media">
                     <div class="media-body">
                         <h3 class="dropdown-item-title">
-                            Name : {{ $contact->client->name }}
+                            Name : {{ optional($contact->client)->name }}
                             <span class="float-right text-sm"><i class="fas fa-envelope-open"></i></span>
                         </h3>
                         <p class="text-sm">Subject : {{ $contact->subject }}</p>

@@ -76,7 +76,7 @@
                                     <td>
                                         @if($client->is_active == 0)
                                             <a href="activate/{{$client->id}}">
-                                                <span class="badge badge-pill badge-success">تفغيل</span>
+                                                <span class="badge badge-pill badge-success">تفعيل</span>
                                             </a>
                                         @elseif($client->is_active == 1)
                                             <a href="deactivate/{{$client->id}}">

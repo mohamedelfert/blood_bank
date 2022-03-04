@@ -68,11 +68,6 @@ class CreateForeignKeys extends Migration {
 						->onDelete('no action')
 						->onUpdate('no action');
 		});
-		Schema::table('contacts', function(Blueprint $table) {
-			$table->foreign('client_id')->references('id')->on('clients')
-						->onDelete('no action')
-						->onUpdate('no action');
-		});
 		Schema::table('client_governorate', function(Blueprint $table) {
 			$table->foreign('client_id')->references('id')->on('clients')
 						->onDelete('no action')
@@ -132,9 +127,6 @@ class CreateForeignKeys extends Migration {
 		});
 		Schema::table('client_notification', function(Blueprint $table) {
 			$table->dropForeign('client_notification_notification_id_foreign');
-		});
-		Schema::table('contacts', function(Blueprint $table) {
-			$table->dropForeign('contacts_client_id_foreign');
 		});
 		Schema::table('client_governorate', function(Blueprint $table) {
 			$table->dropForeign('client_governorate_client_id_foreign');

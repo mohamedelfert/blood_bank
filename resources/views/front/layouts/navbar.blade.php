@@ -29,20 +29,17 @@
                     </li>
                 </ul>
 
-                <!--not a member-->
-                <div class="accounts">
-                    <a href="{{ route('signup') }}" class="create">إنشاء حساب جديد</a>
-                    <a href="{{ route('signin') }}" class="signin">الدخول</a>
-                </div>
-
-
-
-{{--                <a href="#" class="donate">--}}
-{{--                    <img src="{{ asset('design/front/imgs/transfusion.svg') }}">--}}
-{{--                    <p>طلب تبرع</p>--}}
-{{--                </a>--}}
-
-
+                @if(auth()->guard('client')->check())
+                    <a href="{{ route('add-donation-request') }}" class="donate">
+                        <img src="{{ asset('design/front/imgs/transfusion.svg') }}">
+                        <p>طلب تبرع</p>
+                    </a>
+                @else
+                    <div class="accounts">
+                        <a href="{{ route('signup') }}" class="create">إنشاء حساب جديد</a>
+                        <a href="{{ route('signin') }}" class="signin">الدخول</a>
+                    </div>
+                @endif
 
             </div>
         </div>

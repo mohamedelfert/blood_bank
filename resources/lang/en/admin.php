@@ -75,7 +75,9 @@ return [
 
     'contact_subject' => 'Subject',
     'contact_message' => 'Message',
-    'contact_client_name' => 'Client Name',
+    'contact_name' => 'Name',
+    'contact_email' => 'E-mail',
+    'contact_phone' => 'Phone',
     'contact_created_at' => 'Created At',
     'contact_show' => 'Contact Show',
     'delete_contact' => 'Delete Contact',

@@ -37,9 +37,9 @@
                                 <th>#</th>
                                 <th>{{trans('admin.contact_subject')}}</th>
                                 <th>{{trans('admin.contact_message')}}</th>
-                                <th>{{trans('admin.contact_client_name')}}</th>
+                                <th>{{trans('admin.contact_name')}}</th>
                                 <th>{{trans('admin.contact_created_at')}}</th>
-                                <th>{{trans('admin.patient_show')}}</th>
+                                <th>{{trans('admin.contact_show')}}</th>
                                 <th>{{trans('admin.control')}}</th>
                             </tr>
                             </thead>
@@ -57,7 +57,7 @@
                                     <td>{{$i++}}</td>
                                     <td>{{$contact->subject}}</td>
                                     <td>{{$contact->message}}</td>
-                                    <td>{{optional($contact->client)->name}}</td>
+                                    <td>{{$contact->name}}</td>
                                     <td>{{$contact->created_at}}</td>
                                     <td>
                                         <a type="button" class="btn btn-primary" href="{{ adminUrl('contacts/'.$contact->id) }}">

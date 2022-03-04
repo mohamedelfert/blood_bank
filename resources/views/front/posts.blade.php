@@ -13,91 +13,22 @@
                 <div class="row">
                     <!-- Set up your HTML -->
                     <div class="owl-carousel articles-carousel">
-                        <div class="card">
-                            <div class="photo">
-                                <img src="{{ asset('design/front/imgs/p2.jpg') }}" class="card-img-top" alt="...">
-                                <a href="{{ route('post') }}" class="click">المزيد</a>
+                        @foreach($posts as $post)
+                            <div class="card">
+                                <div class="photo">
+                                    <img src="{{ asset('Attachments/' . $post->title . '/' . $post->image) }}" height="200" class="card-img-top" alt="...">
+                                    <a href="{{ route('post',$post->id) }}" class="click">المزيد</a>
+                                </div>
+                                <a href="#" class="favourite">
+                                    <i class="far fa-heart"></i>
+                                </a>
+                                <hr>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ mb_strlen($post->title) > 30 ? mb_substr($post->title,0,30) : $post->title }}</h5>
+                                    <p class="card-text">{{ mb_strlen($post->content) > 40 ? mb_substr($post->content,0,40) : $post->content }}</p>
+                                </div>
                             </div>
-                            <a href="#" class="favourite">
-                                <i class="far fa-heart"></i>
-                            </a>
-
-                            <div class="card-body">
-                                <h5 class="card-title">طريقة الوقاية من الأمراض</h5>
-                                <p class="card-text">
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                    مولد النص العربى،
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="photo">
-                                <img src="{{ asset('design/front/imgs/p2.jpg') }}" class="card-img-top" alt="...">
-                                <a href="{{ route('post') }}" class="click">المزيد</a>
-                            </div>
-                            <a href="#" class="favourite">
-                                <i class="far fa-heart"></i>
-                            </a>
-
-                            <div class="card-body">
-                                <h5 class="card-title">طريقة الوقاية من الأمراض</h5>
-                                <p class="card-text">
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                    مولد النص العربى،
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="photo">
-                                <img src="{{ asset('design/front/imgs/p2.jpg') }}" class="card-img-top" alt="...">
-                                <a href="{{ route('post') }}" class="click">المزيد</a>
-                            </div>
-                            <a href="#" class="favourite">
-                                <i class="far fa-heart"></i>
-                            </a>
-
-                            <div class="card-body">
-                                <h5 class="card-title">طريقة الوقاية من الأمراض</h5>
-                                <p class="card-text">
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                    مولد النص العربى،
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="photo">
-                                <img src="{{ asset('design/front/imgs/p2.jpg') }}" class="card-img-top" alt="...">
-                                <a href="{{ route('post') }}" class="click">المزيد</a>
-                            </div>
-                            <a href="#" class="favourite">
-                                <i class="far fa-heart"></i>
-                            </a>
-
-                            <div class="card-body">
-                                <h5 class="card-title">طريقة الوقاية من الأمراض</h5>
-                                <p class="card-text">
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                    مولد النص العربى،
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="photo">
-                                <img src="{{ asset('design/front/imgs/p2.jpg') }}" class="card-img-top" alt="...">
-                                <a href="{{ route('post') }}" class="click">المزيد</a>
-                            </div>
-                            <a href="#" class="favourite">
-                                <i class="far fa-heart"></i>
-                            </a>
-
-                            <div class="card-body">
-                                <h5 class="card-title">طريقة الوقاية من الأمراض</h5>
-                                <p class="card-text">
-                                    هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من
-                                    مولد النص العربى،
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

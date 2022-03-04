@@ -22,7 +22,7 @@
                                 <div class="logo">
                                     <img src="{{ asset('design/front/imgs/logo.png') }}">
                                 </div>
-                                <div class="details">
+                                <div class="details" style="margin-bottom: 5px">
                                     <ul>
                                         <li><span>الجوال:</span> {{ $settings->phone }}</li>
                                         <li><span>فاكس:</span> 234234234</li>
@@ -30,22 +30,27 @@
                                     </ul>
                                 </div>
                                 <div class="social">
-                                    <h4>تواصل معنا</h4>
+                                    <h4 style="margin-bottom: 10px">تواصل معنا</h4>
                                     <div class="icons" dir="ltr">
                                         <div class="out-icon">
-                                            <a href="#"><img src="{{ asset('design/front/imgs/001-facebook.svg') }}"></a>
+                                            <a href="{{ $settings->fb_url }}" target="_blank">
+                                                <img src="{{ asset('design/front/imgs/001-facebook.svg') }}"></a>
                                         </div>
                                         <div class="out-icon">
-                                            <a href="#"><img src="{{ asset('design/front/imgs/002-twitter.svg') }}"></a>
+                                            <a href="{{ $settings->tw_url }}" target="_blank">
+                                                <img src="{{ asset('design/front/imgs/002-twitter.svg') }}"></a>
                                         </div>
                                         <div class="out-icon">
-                                            <a href="#"><img src="{{ asset('design/front/imgs/003-youtube.svg') }}"></a>
+                                            <a href="{{ $settings->youtube_url }}" target="_blank">
+                                                <img src="{{ asset('design/front/imgs/003-youtube.svg') }}"></a>
                                         </div>
                                         <div class="out-icon">
-                                            <a href="#"><img src="{{ asset('design/front/imgs/004-instagram.svg') }}"></a>
+                                            <a href="{{ $settings->insta_url }}" target="_blank">
+                                                <img src="{{ asset('design/front/imgs/004-instagram.svg') }}"></a>
                                         </div>
                                         <div class="out-icon">
-                                            <a href="#"><img src="{{ asset('design/front/imgs/005-whatsapp.svg') }}"></a>
+                                            <a href="{{ 'https://wa.me/'.$settings->phone }}" target="_blank">
+                                                <img src="{{ asset('design/front/imgs/005-whatsapp.svg') }}"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -58,13 +63,57 @@
                                 <h4>تواصل معنا</h4>
                             </div>
                             <div class="fields">
-                                <form action="" method="post">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="الإسم" name="name">
-                                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="البريد الإلكترونى" name="email">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="الجوال" name="phone">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="عنوان الرسالة" name="title">
-                                    <textarea placeholder="نص الرسالة" class="form-control" id="exampleFormControlTextarea1" rows="3" name="text"></textarea>
-                                    <button type="submit">ارسال</button>
+                                <form method="POST" action="{{ route('add-contact') }}">
+                                    @csrf
+
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                           id="name" name="name" value="{{ old('name') }}" aria-describedby="emailHelp"
+                                           placeholder="الإسم" autofocus>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                           name="email" value="{{ old('email') }}" id="exampleFormControlInput1"
+                                           placeholder="البريد الإلكترونى" autofocus>
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                    <input type="text" class="form-control @error('phone') is-invalid @enderror"
+                                           name="phone" value="{{ old('phone') }}" id="exampleFormControlInput1"
+                                           placeholder="الجوال" autofocus>
+                                    @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                    <input type="text" class="form-control @error('subject') is-invalid @enderror"
+                                           name="subject" value="{{ old('subject') }}" id="exampleFormControlInput1"
+                                           placeholder="عنوان الرسالة" autofocus>
+                                    @error('subject')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                    <textarea placeholder="نص الرسالة"
+                                              class="form-control @error('message') is-invalid @enderror" name="message"
+                                              id="exampleFormControlTextarea1" rows="3"
+                                              autofocus>{{ old('message') }}</textarea>
+                                    @error('message')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
+                                    <button type="submit">إرسال</button>
+
                                 </form>
                             </div>
                         </div>
