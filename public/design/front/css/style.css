@@ -614,11 +614,11 @@ p {
 
 .articles .view .articles-carousel .card .favourite i {
     position: absolute;
-    background-color: #2d3e50;
+    /*background-color: #2d3e50;*/
     border: none;
-    color: #FFF;
+    /*color: #FFF;*/
     border-radius: 100%;
-    font-size: 20px;
+    font-size: 40px;
     padding: 10px;
     top: 6px;
     left: 6px;
@@ -706,6 +706,24 @@ p {
     outline: none;
 }
 
+
+.second-heart{
+
+    color: #d81c23;
+    font-size: 48px;
+    /*position: absolute;*/
+    left: .5rem;
+    top: .8rem;
+}
+
+.first-heart{
+
+    color: #2d3e50;
+    font-size: 48px;
+    /*position: absolute;*/
+    left: .5rem;
+    top: .8rem;
+}
 
 /*requests*/
 
@@ -1266,14 +1284,28 @@ select {
     justify-content: flex-end;
 }
 
-.article-details .inside-article .article-title .icon button {
+.article-details .inside-article .article-title .icon .first {
     background-color: #2d3e50;
     border-radius: 100%;
-    font-size: 18px;
+    font-size: 40px;
     height: 40px;
     width: 40px;
     border: 1px solid #FFF;
     color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.article-details .inside-article .article-title .icon .second {
+    background-color: #2d3e50;
+    border-radius: 100%;
+    font-size: 40px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #FFF;
+    color: #ff0009;
     display: flex;
     align-items: center;
     justify-content: center;

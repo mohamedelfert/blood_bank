@@ -33,7 +33,7 @@ Route::group(['prefix' => 'front', 'namespace' => 'Front'], function () {
 
     Route::get('/posts', 'MainController@posts')->name('posts');
     Route::get('/post/{id}', 'MainController@post')->name('post');
-//    Route::get('/toggle-favourite', 'MainController@toggleFavourite')->name('toggle-favourite');
+    Route::post('/toggle-favourite', 'MainController@toggleFavourite')->name('toggle-favourite');
 
     Route::get('/client-profile/{id}', 'AuthController@profile')->name('client-profile');
     Route::post('/client-profile/{id}', 'AuthController@edit_profile')->name('client-profile');

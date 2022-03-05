@@ -20,7 +20,7 @@
                                id="patient_name" name="patient_name" value="{{ old('patient_name') }}"
                                aria-describedby="emailHelp" placeholder="اسم المريض" autofocus>
                         @error('patient_name')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -29,7 +29,7 @@
                                id="patient_phone" name="patient_phone" value="{{ old('patient_phone') }}"
                                aria-describedby="emailHelp" placeholder="رقم الهاتف" autofocus>
                         @error('patient_phone')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -38,7 +38,7 @@
                                id="patient_age" name="patient_age" value="{{ old('patient_age') }}" min="1" max="120"
                                aria-describedby="emailHelp" placeholder="عمر المريض" autofocus>
                         @error('patient_age')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -51,7 +51,7 @@
                             @endforeach
                         </select>
                         @error('blood_type_id')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -64,7 +64,7 @@
                             @endforeach
                         </select>
                         @error('city_id')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -73,7 +73,7 @@
                                name="bags_num" value="{{ old('bags_num') }}" min="1" max="10"
                                aria-describedby="emailHelp" placeholder="عدد اكياس الدم" autofocus>
                         @error('bags_num')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -82,7 +82,7 @@
                                id="hospital_name" name="hospital_name" value="{{ old('hospital_name') }}"
                                aria-describedby="emailHelp" placeholder="اسم المستشفي" autofocus>
                         @error('hospital_name')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -91,7 +91,7 @@
                                id="hospital_address" name="hospital_address" value="{{ old('hospital_address') }}"
                                aria-describedby="emailHelp" placeholder="عنوان المستشفي" autofocus>
                         @error('hospital_address')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -100,7 +100,7 @@
                                name="latitude" value="{{ old('latitude') }}" aria-describedby="emailHelp"
                                placeholder="خط الطول مثال (30.79303510)" autofocus>
                         @error('latitude')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -109,7 +109,7 @@
                                name="longitude" value="{{ old('longitude') }}" aria-describedby="emailHelp"
                                placeholder="خط العرض مثال (30.79303510)" autofocus>
                         @error('longitude')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -119,7 +119,7 @@
                                   id="exampleFormControlTextarea1" rows="3"
                                   autofocus>{{ old('details') }}</textarea>
                         @error('details')
-                            <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
@@ -134,28 +134,3 @@
     </div>
 
 @endsection
-
-@push('js')
-    <script>
-        $(document).ready(function () {
-            $('select[name="governorate_id"]').on('change', function () {
-                var governorate_id = $(this).val();
-                if (governorate_id) {
-                    $.ajax({
-                        url: "{{ url('cities?governorate_id=') }}" + governorate_id,
-                        type: "GET",
-                        dataType: "json",
-                        success: function (data) {
-                            $('select[name="city_id"]').empty();
-                            $.each(data, function (key, value) {
-                                $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
-                            });
-                        },
-                    });
-                } else {
-                    console.log('AJAX Load Did Not Work');
-                }
-            });
-        });
-    </script>
-@endpush

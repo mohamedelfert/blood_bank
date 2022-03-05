@@ -90,6 +90,7 @@ class MainController extends Controller
     public function donation_requests_filter(Request $request)
     {
         $blood_types = BloodType::all();
+        $posts = Post::all();
         $cities = City::all();
         if (!empty($request->blood_type_id) && !empty($request->city_id)) {
             $donation_requests = Donation::where('blood_type_id', $request->blood_type_id)->where('city_id', $request->city_id)->paginate(4);
@@ -98,7 +99,7 @@ class MainController extends Controller
         } elseif (!empty($request->city_id)) {
             $donation_requests = Donation::where('city_id', $request->city_id)->paginate(4);
         }
-        return view('front.home', compact('donation_requests', 'blood_types', 'cities'));
+        return view('front.home', compact('donation_requests', 'blood_types', 'cities','posts'));
     }
 
     public function add_donation()
@@ -188,9 +189,9 @@ class MainController extends Controller
         return view('front.post-details',compact('post','posts'));
     }
 
-//    public function toggleFavourite(Request $request)
-//    {
-//        $toggle = $request->user()->posts()->toggle($request->post_id);
-//        return responseJson(1,'success',$toggle);
-//    }
+    public function toggleFavourite(Request $request)
+    {
+        $toggle = $request->user('client')->posts()->toggle($request->post_id);
+        return responseJson(1,'success',$toggle);
+    }
 }

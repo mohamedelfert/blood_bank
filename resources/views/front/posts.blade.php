@@ -19,8 +19,8 @@
                                     <img src="{{ asset('Attachments/' . $post->title . '/' . $post->image) }}" height="200" class="card-img-top" alt="...">
                                     <a href="{{ route('post',$post->id) }}" class="click">المزيد</a>
                                 </div>
-                                <a href="#" class="favourite">
-                                    <i class="far fa-heart"></i>
+                                <a class="favourite">
+                                    <i id="{{$post->id}}" onclick="toggleFavourite(this)" class="fab fa-gratipay {{$post->is_favourite ? 'second-heart' : 'first-heart'}}"></i>
                                 </a>
                                 <hr>
                                 <div class="card-body">
@@ -36,3 +36,30 @@
     </div>
 
 @endsection
+
+@push('js')
+    <script>
+        function toggleFavourite(heart){
+            var post_id = heart.id;
+            $.ajax({
+                url : '{{ url(route('toggle-favourite')) }}',
+                type : 'post',
+                data : {_token:"{{csrf_token()}}",post_id:post_id},
+                success : function (data){
+                    if(data.status == 1){
+                        console.log(data);
+                        var currentClass = $(heart).attr('class');
+                        if(currentClass.includes('first')){
+                            $(heart).removeClass('first-heart').addClass('second-heart');
+                        }else {
+                            $(heart).removeClass('second-heart').addClass('first-heart');
+                        }
+                    }
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback
+                    alert(errorMessage);
+                }
+            })
+        }
+    </script>
+@endpush

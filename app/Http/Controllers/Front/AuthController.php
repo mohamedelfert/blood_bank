@@ -17,8 +17,8 @@ class AuthController extends Controller
     {
         $blood_types = BloodType::all();
         $governorates = Governorate::all();
-        $cities = City::all();
-        return view('front.signup',compact('blood_types','governorates','cities'));
+//        $cities = City::all();
+        return view('front.signup',compact('blood_types','governorates'));
     }
 
     public function doSignup(Request $request)

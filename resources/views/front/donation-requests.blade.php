@@ -19,7 +19,7 @@
                         <h2>طلبات التبرع</h2>
                     </div>
                     <div class="content">
-                        <form class="row filter">
+                        <form action="{{ route('donation-requests-filter') }}" method="POST" class="row filter">
                             <div class="col-md-5 blood">
                                 <div class="form-group">
                                     <div class="inside-select">

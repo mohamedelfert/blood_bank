@@ -62,9 +62,9 @@
 
                         <select class="form-control @error('city_id') is-invalid @enderror" id="city_id" name="city_id" autofocus>
                             <option  selected disabled hidden value="">المدينة</option>
-                            @foreach($cities as $city)
-                                <option value="{{ $city->id }}">{{ $city->name }}</option>
-                            @endforeach
+{{--                            @foreach($cities as $city)--}}
+{{--                                <option value="{{ $city->id }}">{{ $city->name }}</option>--}}
+{{--                            @endforeach--}}
                         </select>
                         @error('city_id')
                         <span class="invalid-feedback" role="alert">
@@ -114,19 +114,24 @@
 @push('js')
     <script>
         $(document).ready(function() {
-            $('select[name="governorate_id"]').on('change', function() {
+            $('select[id="governorate_id"]').on('change', function() {
                 var governorate_id = $(this).val();
                 if (governorate_id) {
                     $.ajax({
-                        url: "{{ url('cities?governorate_id=') }}" + governorate_id,
+                        url: "{{ url('api/v1/cities?governorate_id=') }}" + governorate_id,
                         type: "GET",
-                        dataType: "json",
                         success: function(data) {
-                            $('select[name="city_id"]').empty();
-                            $.each(data, function(key, value) {
-                                $('select[name="city_id"]').append('<option value="' + key + '">' + value + '</option>');
-                            });
-                        },
+                           if(data.status == 1){
+                               $('select[id="city_id"]').empty();
+                               $.each(data.data, function(key, value) {
+                                   $('select[id="city_id"]').append('<option value="' + value.id + '">' + value.name + '</option>');
+                               });
+                               // $("#city_id").empty();
+                               // $.each(data.data, function (index, city) {
+                               //     $("#city_id").append('<option value="'+city.id+'">'+city.name+'</option>');
+                               // });
+                           }
+                        }
                     });
                 } else {
                     console.log('AJAX Load Did Not Work');
