@@ -68,7 +68,7 @@ class MainController extends Controller
 
     public function donation_requests()
     {
-        $donation_requests = Donation::orderBy('id', 'desc')->paginate(9);
+        $donation_requests = Donation::orderBy('id', 'desc')->paginate(10);
         $blood_types = BloodType::all();
         $cities = City::all();
         if (!empty($request->blood_type_id) && !empty($request->city_id)) {
