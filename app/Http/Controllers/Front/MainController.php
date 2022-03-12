@@ -87,6 +87,7 @@ class MainController extends Controller
         return view('front.donation-request-details', compact('donation_request'));
     }
 
+    // For Home Page Donations Requests Filter
     public function donation_requests_filter(Request $request)
     {
         $blood_types = BloodType::all();
@@ -100,6 +101,21 @@ class MainController extends Controller
             $donation_requests = Donation::where('city_id', $request->city_id)->paginate(4);
         }
         return view('front.home', compact('donation_requests', 'blood_types', 'cities','posts'));
+    }
+
+    // For Donations Requests Page Filter
+    public function donations_filter(Request $request)
+    {
+        $blood_types = BloodType::all();
+        $cities = City::all();
+        if (!empty($request->blood_type_id) && !empty($request->city_id)) {
+            $donation_requests = Donation::where('blood_type_id', $request->blood_type_id)->where('city_id', $request->city_id)->paginate(4);
+        } elseif (!empty($request->blood_type_id)) {
+            $donation_requests = Donation::where('blood_type_id', $request->blood_type_id)->paginate(4);
+        } elseif (!empty($request->city_id)) {
+            $donation_requests = Donation::where('city_id', $request->city_id)->paginate(4);
+        }
+        return view('front.donation-requests', compact('donation_requests', 'blood_types', 'cities'));
     }
 
     public function add_donation()

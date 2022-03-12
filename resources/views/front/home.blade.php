@@ -140,7 +140,7 @@
                     @foreach($donation_requests as $donation)
                         <div class="details">
                             <div class="blood-type">
-                                <h2 dir="ltr">B+</h2>
+                                <h2 dir="ltr">{{ optional($donation->bloodType)->name }}</h2>
                             </div>
                             <ul>
                                 <li><span>اسم الحالة:</span> {{ $donation->patient_name }} </li>

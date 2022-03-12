@@ -19,11 +19,12 @@
                         <h2>طلبات التبرع</h2>
                     </div>
                     <div class="content">
-                        <form action="{{ route('donation-requests-filter') }}" method="POST" class="row filter">
+                        <form action="{{ route('donations-filter') }}" method="POST" class="row filter">
+                            @csrf
                             <div class="col-md-5 blood">
                                 <div class="form-group">
                                     <div class="inside-select">
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" name="blood_type_id">
                                             <option selected disabled>اختر فصيلة الدم</option>
                                             @foreach($blood_types as $blood_type)
                                                 <option value="{{ $blood_type->id }}">{{ $blood_type->name }}</option>
@@ -36,7 +37,7 @@
                             <div class="col-md-5 city">
                                 <div class="form-group">
                                     <div class="inside-select">
-                                        <select class="form-control" id="exampleFormControlSelect1">
+                                        <select class="form-control" id="exampleFormControlSelect1" name="city_id">
                                             <option selected disabled>اختر المدينة</option>
                                             @foreach($cities as $city)
                                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
@@ -56,7 +57,7 @@
                             @foreach($donation_requests as $donation)
                                 <div class="details">
                                     <div class="blood-type">
-                                        <h2 dir="ltr">B+</h2>
+                                        <h2 dir="ltr">{{ optional($donation->bloodType)->name }}</h2>
                                     </div>
                                     <ul>
                                         <li><span>اسم الحالة:</span> {{ $donation->patient_name }} </li>

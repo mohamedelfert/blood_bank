@@ -27,7 +27,8 @@ Route::group(['prefix' => 'front', 'namespace' => 'Front'], function () {
 
     Route::get('/donation-requests', 'MainController@donation_requests')->name('donation-requests');
     Route::get('/donation-details/{id}', 'MainController@donation_details')->name('donation-details');
-    Route::post('/donation-requests-filter', 'MainController@donation_requests_filter')->name('donation-requests-filter');
+    Route::post('/donation-requests-filter', 'MainController@donation_requests_filter')->name('donation-requests-filter'); // For Home Page Donations Requests Filter
+    Route::post('/donations-filter', 'MainController@donations_filter')->name('donations-filter'); // For Donations Requests Page Filter
     Route::get('/add-donation-request', 'MainController@add_donation')->name('add-donation-request');
     Route::post('/add-donation-request', 'MainController@add_donation_request')->name('add-donation-request');
 
